@@ -1,15 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {getUserInfo} from '../../ducks/users'
 
-export default class Private extends React.Component {
-    constructor(props){
-        super(props);
-        this.state ={
-
-        }
-    }
-
+ class Private extends React.Component {
+    
     componentDidMount(){
-        
+        this.props.getUserInfo()
     }
 
     bankBalance() {
@@ -31,3 +27,13 @@ export default class Private extends React.Component {
         )
     }
 }
+function mapStateToProps(state){
+    return {
+        user: state.user
+    }
+}
+
+//let decoratedComp = connect()'
+//export default decoratedComp()
+//above is the same thing as below minus the {getUserInfo}.
+export default connect(mapStateToProps, {getUserInfo})(Private)
