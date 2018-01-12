@@ -4,7 +4,8 @@ const express = require('express')
     , session = require('express-session')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
-    , massive = require('massive');
+    , massive = require('massive')
+    , axios =require('axios');
 
 //This is an alternative
 // const{
@@ -86,6 +87,11 @@ app.get('/auth/me', (req, res) => {
     } else {
         res.status(200).send(req.user);
     }
+})
+app.get('/auth/logout', (req,res)=> {
+    req.logOut();
+    axios.get('/v2/logout/returnTo=LOGOUT_URL')
+    res.redirect('http://localhost:3000')
 })
 
 //server port

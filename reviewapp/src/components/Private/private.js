@@ -18,7 +18,7 @@ import {getUserInfo} from '../../ducks/users'
                 <h1>Community Bank</h1><hr />
                 <h4>Account information:</h4>
                 {user ? <img className='avatar' src={user.img} /> : null}
-                <p>Username: {user ? user.user_name : null}</p>
+                <p>Username: {user ? user.username : null}</p>
                 <p>Email: {user ? user.email : null}</p>
                 <p>ID: {user ? user.auth_id : null}</p>
                 <h4>Available balance: {user ? this.bankBalance() : null} </h4>
